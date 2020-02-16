@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { BottomNavigation } from "react-native-paper";
 import AddStudyItem from "./src/Scenes/AddStudyItem";
+import { StudyItem } from "./src/types";
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -29,6 +30,7 @@ export default function App() {
       { key: "add", title: "Add" }
     ]
   });
+  const [studyItems, setStudyItems] = useState<StudyItem[]>([]);
 
   const handleIndexChange = index =>
     setNavState({
@@ -36,17 +38,25 @@ export default function App() {
       index
     });
 
-  const renderScene = BottomNavigation.SceneMap({
-    list: ListRoute,
-    add: AddStudyItem
-  });
+  const handleStudyItems = item => setStudyItems([item, ...studyItems]);
+
+  const renderScene2 = ({ route }) => {
+    switch (route.key) {
+      case "list":
+        return <ListRoute />;
+      case "add":
+        return <AddStudyItem addStudyItem={handleStudyItems} />;
+      default:
+        throw new Error("Invalid route key");
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <BottomNavigation
         navigationState={navState}
         onIndexChange={handleIndexChange}
-        renderScene={renderScene}
+        renderScene={renderScene2}
       />
     </SafeAreaView>
   );
