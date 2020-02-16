@@ -8,7 +8,10 @@
     "eject": "expo eject",
     "fmt:prettier": "prettier --write \"**/*.{tsx,js,json,ts}\"",
     "fmt:eslint": "eslint \"**/*.{tsx,js,ts}\" --fix",
-    "fmt": "yarn run fmt:prettier && yarn run fmt:eslint"
+    "fmt": "yarn run fmt:prettier && yarn run fmt:eslint",
+    "lint:prettier": "prettier --check \"**/*.{tsx,js,json,ts}\"",
+    "lint:eslint": "eslint \"**/*.{tsx,js,ts}\"",
+    "lint": "yarn lint:prettier && yarn lint:eslint"
   },
   "dependencies": {
     "expo": "~36.0.0",
