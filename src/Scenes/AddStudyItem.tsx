@@ -31,6 +31,9 @@ export default function AddStudyItem(props: {
     description: ""
   });
 
+  let englishRef = null;
+  let descriptionRef = null;
+
   const handlePress = () => {
     setEnglish("");
     setDescription("");
@@ -42,6 +45,8 @@ export default function AddStudyItem(props: {
       english,
       description
     });
+    englishRef.blur();
+    descriptionRef.blur();
   };
 
   return (
@@ -49,6 +54,9 @@ export default function AddStudyItem(props: {
       <View style={styles.consistent}>
         <Headline>Add Study Item</Headline>
         <TextInput
+          ref={input => {
+            englishRef = input;
+          }}
           style={styles.textInput}
           mode="outlined"
           label="english"
@@ -56,6 +64,9 @@ export default function AddStudyItem(props: {
           onChangeText={text => setEnglish(text)}
         />
         <TextInput
+          ref={input => {
+            descriptionRef = input;
+          }}
           style={styles.textInput}
           mode="outlined"
           label="description"
