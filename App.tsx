@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { BottomNavigation } from "react-native-paper";
+import AddStudyItem from "./src/Scenes/AddStudyItem";
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,7 @@ export default function App() {
 
   const renderScene = BottomNavigation.SceneMap({
     list: ListRoute,
-    add: AddRoute
+    add: AddStudyItem
   });
 
   return (
