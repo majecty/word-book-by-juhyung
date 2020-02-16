@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { BottomNavigation } from "react-native-paper";
 import AddStudyItem from "./src/Scenes/AddStudyItem";
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -15,12 +18,6 @@ const styles = StyleSheet.create({
 const ListRoute = () => (
   <View style={styles.container}>
     <Text>List UI</Text>
-  </View>
-);
-
-const AddRoute = () => (
-  <View style={styles.container}>
-    <Text>Add UI</Text>
   </View>
 );
 
@@ -45,10 +42,12 @@ export default function App() {
   });
 
   return (
-    <BottomNavigation
-      navigationState={navState}
-      onIndexChange={handleIndexChange}
-      renderScene={renderScene}
-    />
+    <SafeAreaView style={styles.safeAreaView}>
+      <BottomNavigation
+        navigationState={navState}
+        onIndexChange={handleIndexChange}
+        renderScene={renderScene}
+      />
+    </SafeAreaView>
   );
 }
