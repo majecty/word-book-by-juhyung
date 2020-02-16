@@ -15,8 +15,19 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".ts", ".tsx"]
+      }
+    }
+  },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    "react/jsx-filename-extension": [2, { extensions: [".tsx"] }]
+    "react/jsx-filename-extension": [2, { extensions: [".tsx", "ts"] }],
+    "import/extensions": [2, "never"],
+    "react/jsx-curly-newline": "off",
+    // ESlint does not handle type import
+    "no-unused-vars": "off"
   }
 };
