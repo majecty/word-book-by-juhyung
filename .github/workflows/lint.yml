@@ -1,0 +1,13 @@
+name: Check code style
+on: [push]
+
+jobs:
+  build:
+    name: Check Style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
+      - run: yarn install
+      - run: yarn lint
