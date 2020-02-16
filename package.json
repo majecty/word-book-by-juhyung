@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "fmt": "prettier --write \"**/*.{tsx,js,json,ts}\""
+    "fmt:prettier": "prettier --write \"**/*.{tsx,js,json,ts}\"",
+    "fmt:eslint": "eslint \"**/*.{tsx,js,ts}\" --fix",
+    "fmt": "yarn run fmt:prettier && yarn run fmt:eslint"
   },
   "dependencies": {
     "expo": "~36.0.0",
